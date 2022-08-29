@@ -9,7 +9,7 @@ username = input("Enter your username: ")
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((host, port))
 
-def recieve_mesasges():
+def recieve_messages():
     while True:
         try:
             message = client.recv(1024).decode("utf-8")
@@ -27,7 +27,7 @@ def write_messages():
         message = f"{username} : {input('')}"
         client.send(message.encode("utf-8"))
 
-recieve_thread = threading.Thread(target=recieve_mesasges)
+recieve_thread = threading.Thread(target=recieve_messages)
 recieve_thread.start()
 
 write_thread = threading.Thread(target=write_messages)
